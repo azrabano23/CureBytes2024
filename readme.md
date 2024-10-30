@@ -32,3 +32,5 @@ npm install
 npm install @google/generative-ai
 npm install react-router-dom
 ```
+
+Note: This project has been copied into my personal Git Repo. The original Should be on this link: https://github.com/sumedhsinha/health-hack-2024 
