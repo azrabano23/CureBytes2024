@@ -23,7 +23,7 @@ The application has been deployed on AWS using Amplify, with the current deploym
 
 ## Resources
 - **YouTube Walkthrough**: [Watch Here](https://youtu.be/iOtvVrJdf8Q)
-
+- **Backend Walkthrough**: [Watch Here](https://youtu.be/elpSzzkKbf4)
 ## Getting Started
 To get started with the project, ensure you have Node.js installed, and then run the following commands to install the required libraries:
 
