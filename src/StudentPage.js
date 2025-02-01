@@ -4,13 +4,15 @@ import './App.css';
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 // Fine tune Model
-const genAI = new GoogleGenerativeAI("AIzaSyC-wXVEsB3VmuNwKgF838DdbC9Oab88Q4k"); // Fine-Tuned API Key - LLM 1
+const genAI = new GoogleGenerativeAI("AIzaSyCZxmq7HqGr85ob0hAgYs9SdzcGAwlftSg"); // Fine-Tuned API Key - LLM 1
 const model = genAI.getGenerativeModel({ model: "tunedModels/curebyte-9443utsnaamd"}); 
 
 // Second Gimini Model
-const LLM2 = new GoogleGenerativeAI("AIzaSyCekRthSbMch4wu8MPikzm-aoWWuGsxj2o");
+const LLM2 = new GoogleGenerativeAI("AIzaSyCLFNE-TvuSVPrK9jiwszmp99hnw7B0_nY");
 const model2 = LLM2.getGenerativeModel({model: "gemini-1.5-flash"});
 const options = ['Onset', 'Site', 'Duration', 'Radiation', 'Frequency', 'Quality and Character', 'Progression', 'Severity', 'Aggravating and Relieving Factors', 'Associated Symptoms', 'S.O.B. - Exertion', 'S.O.B. - while flat', 'S.O.B at right', 'Palpitations', 'Ankle Swelling', 'Transient Loss of Consciousness', 'Intermittent Claudication', 'Fever, Fatigue', 'Smoking', 'Hypertension', 'DM', 'F.M. of CAD', 'Previous History of CAD', 'Hyperlipedemia', 'Obesity & Physical Inactivity'];
+const savedRatings = localStorage.getItem('teacherRatings');
+const rating = JSON.parse(savedRatings);
 
 function StudentPage() {
   const navigate = useNavigate();
@@ -65,7 +67,7 @@ async function handleStudentFromTeacher(){
   setOutputText(aiComments);
 };
   async function promptEngineering(i){
-    const prompt = "Did the feedback include " + options[i]+ ", explicitly or implicitly.\nThe Feedback: " + localStorage.getItem('AICommentary');
+    const prompt = "Did the feedback include " + options[i]+ ", explicitly or implicitly. This is how much weight you should be giving "+  rating[i] + "\nThe Feedback: " + localStorage.getItem('AICommentary');
     console.log(prompt);
     try {
       const AICommentary = await model2.generateContent(prompt);
